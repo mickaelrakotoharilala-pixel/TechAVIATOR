@@ -1,3 +1,4 @@
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,813 +6,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechAVIATOR2025</title>
 </head>
-    <style>
-    * {
-        box-sizing: border-box;
+<style>
+    * {box-sizing: border-box;}
+    body {font-family: 'Segoe UI', sans-serif;margin: 0;background: white;}
+    .page {display: none;padding: 0px;}
+    .active {display: block;}
+    .active p{color: black;font-weight: bold;}
+    .tete{background: #0a3d62;padding: 6px;}
+    .tete h5{margin-left: 33%;color: #E53935;font-size: 20px;}
+    h5{margin: 5px;}
+    .hero{padding:1rem 1rem 3rem;background:linear-gradient(135deg,#1e3c72,blue);color:#fff;text-align:center;}
+    .hero h1{font-size:2.2rem;margin-bottom:1rem;lettre-spacing: 2px;text-shadow: 0 0 8px #74b9ff;margin-bottom: 20px;padding: 5px;border-radius: 10px;}
+    .hero p{font-size:1.2rem;max-width:700px;margin:auto;color: white;font-weight: 400;
     }
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        margin: 0;
-        background: black;
-        color: #333;
+    .Container{width: 80%;margin-left: 10%;margin-top: 3%;background-color: #1a1a2e;padding:2rem;border-radius:8px;box-shadow:0 2px 8px #42A5F5;}
+    .icon {text-align: center;font-size: 53px;
     }
-    header {
-        background: transparent;
-        height: 30vh;
-        color: #fff;
-        text-align: center;
-        padding: 2em 1em;
-    }
-    header h1 {
-        font-size: 28px;
-        margin: 0;
-        letter-spacing: 2px;
-        text-shadow: 0 0 8px #74b9ff;
-    }
-    header p {
-        margin: 0.5em 0 1em;
-        color: #a2b1c6;
-        font-style: italic;
-    }
-    nav {
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        gap: 0.7em;
-        font-size: 16px;
-        padding: 1em;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        border-radius: 8px;
-    }
-    nav a {
-        color: #B2EBF2;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 15px;
-        transition: color 0.3s, transform 0.2s;
-        perspective: 500px;
-    }
-    nav a:active {
-        transform: rotateX(15deg) translateZ(5px);
-        color: #0984e3;
-        transition: transform 0.1s;
-    }
-    nav a:hover {
-        color: #0984e3;
-    }
-    section {
-        display: none;
-        max-width: 900px;
-        margin: 2em auto;
-        padding: 2em;
-        background: transparent;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(10, 61, 98, 0.1);
-        color: #222;
-    }
-    section.active {
-        display: block;
-        animation: fadeIn 0.5s ease-in-out;
-    }
-    h2 {
-        color: #0984e3; 
-        margin-top: 0;
-        position: relative;
-        overflow: hidden;
-    }
-    #accueil h2 {
-        animation: slideInFromLeft 1s ease forwards;
-    }
-    #accueil p {
-        animation: fadeInText 2s ease forwards;
-        opacity: 0;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideInFromLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes fadeInText {
-      to { opacity: 1; }
-    }
-    article {
-        margin-bottom: 2em;
-    }
-    footer {
-        text-align: center;
-        background: #0a3d62;
-        color: #a2b1c6;
-        padding: 1em;
-        margin-top: 3em;
-        font-size: 0.9em;
-        border-radius: 0 0 12px 12px;
-    } 
-    #accueil img {
-        width: 100%;
-        border-radius: 10px;
-        margin-top: 1em;
-        box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
-        transition: transform 0.3s ease;
-        cursor: pointer;
-        perspective: 500px;
-    }
-    #accueil img:active {
-        transform: rotateX(15deg) translateZ(8px);
-        box-shadow: 0 8px 25px rgba(9, 132, 227, 0.6);
-        transition: transform 0.1s;
-    }
-    .plane-icon {
-        font-size: 120px;
-        color: #ff0000;
-        opacity: 0.7;
-        font-family: 'Arial', sans-serif;
-        filter: drop-shadow(0 0 2px white);
-        font-weight: bold;
-        transform: rotate(-40deg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 13vh;
-    }
-    .page {
-        display: none;
-        padding: 0px;
-    }
-    .active {
-        display: block;
-    }
-    .active p{
-        color: white;
-        font-weight: bold;
-    }
-    .login-box {
-        text-align: center;
-        color: white;
-    }
-    .login-box input {
-        width: 100%;
-        height: 30px;
-        outline: none;
-        border: 2px solid rgb(255, 255, 255, 2);
-        border-radius: 40px;
-        font-size: 16px;
-        color: black;
-        padding: 20px 45px 20px 20px;
-    }
-    .login-box input::placeholder{
-        color: gray;
-    }
-    .login-box h1 {
-        font-size: 1.6em;
-        margin: 10;
-        lettre-spacing: 2px;
-        text-shadow: 0 0 8px #74b9ff;
-        margin-bottom: 20px;
-        padding: 5px;
-        border-radius: 10px;
-    }
-    .login-box h2 {
-        text-align: center;
-        font-size: 14px;
-        color: green;
-        opacity: 0.8;
-    }
-    .warning-box {
-        background-color: #330000;
-        border: 1px solid #ff0000;
-        border-radius: 12px;
-        padding: 15px;
-        margin: 30px 0;
-        display: flex;
-        align-items: center;
-        font-size: 0.9em;
-        color: #ffffff;
-    }
-    .warning-icon {
-        font-size: 1.5em;
-        color: #ff0000;
-         margin-right: 10px;
-     }
-   .warning-text {
-        font-size: 15px;
-        text-align: center;
-        flex-grow: 1;
-        line-height: 1.4;
-    }
-    input, button {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: none;
-    }
-    button {
-        background-color: #ff0000;
-        color: #ffffff;
-        border: none;
-        border-radius: 8px;
-        padding: 12px 25px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        width: 100%;
-        transition: background-color 0.3s ease;
-    }
-    button:hover{
-        background-color: #cc0000;
-    }
-    .service{
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        background: green;
-        border-radius: 3px;
-        padding: 5px;
-        color: white;
-    }
-    .cont{
-        font-weight: bold;
-        text-align: center;
-        background: #CFD8DC;
-        border-radius: 6px;
-        height: 10vh;
-    }
-    .cont h7{
-        font-size: 15px;
-        color: #9CCC35;
-        padding: 0px;
-    }
-    .conte h7{
-        font-size: 15px;
-        color: #9CCC35;
-        padding: 0px;
-    }
-    .cont span{
-        color: #0984e3;
-    }
-    h0{
-        font-size: 15px;
-        color: #9CCC35;
-        padding: 0px;
-    }
-    h01{
-        font-size: 15px;
-        color: #9CCC35;
-        padding: 0px;
-    }
-    h0 span{
-        color: #0984e3;
-    }
-    .live-indicator{
-        color: gray;
-        font-size: 13px;
-    }
-    table {
-        text-align: left;
-        width: 100%;
-    }
-    .label-with-icon {
-        display: flex;
-        align-items: center;
-        font-size: 0.9em;
-        color: #9B6ED9;
-        margin-bottom: 8px;
-        font-weight: 600; 
-    }
-   .label-with-icon svg {
-        margin-right: 8px;
-        color: #9B6ED9;
-        width: 18px;
-        height: 18px;
-    }
-    .percentage-bar {
-        width: 100%;
-        background: #333;
-        height: 19px;
-        border-radius: 10px;
-        margin-top: 10px;
-    }
-    .percentage-fill {
-        height: 100%;
-        background: #4CAF50;
-        border-radius: 10px;
-         width: 0%;
-    }
-    .prediction-title {
-        font-size: 1.6em;
-        margin: 10;
-        lettre-spacing: 2px;
-        color: white;
-        text-shadow: 0 0 8px #74b9ff;
-        margin-bottom: 20px;
-        padding: 5px;
-        border-radius: 10px;
-        text-align: center;
-    }
-    input[type="number"],
-    input[type="text"] {
-        width: 100%;
-        padding: 12px 15px;
-        background-color: transparent;
-        border: 1px solid #4A2E8E;
-        border-radius: 8px;
-        color: white;
-        font-size: 1.1em;
-        box-sizing: border-box;
-        outline: none;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    input[type="number"]:focus,
-    input[type="text"]:focus {
-        border-color: #42A5F5;
-        box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
-    }
-    input::placeholder {
-        color: #7A5BBD;
-    }
+    .login-box {text-align: center;color: white;}
+    .login-box input {width: 100%;height: 30px;outline: none;background-color: transparent;border: 1px solid #42A5F5;border-radius: 40px;font-size: 16px;color: black;padding: 20px 45px 20px 20px;}
+    .login-box input::placeholder{color: gray;background-color: transparent;}
+    .login-box h1 {color: #29B6F6;text-align: center;font-size: 27px;}
+    .login-box h2 {text-align: center;font-size: 16px;opacity: 0.8;font-weight: 300;color: white;}
     input[type="email"]:focus,
     input[type="password"]:focus,
     select:focus,
-    textarea:focus {
-        outline: none;
-        border-color: #2196F3;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        background-color: white;
-    }
-    textarea {
-        background-color: white;
-        resize: vertical;
-        min-height: 120px;
-    }
-    body h3{
-        justify-content: center;
-        color: red;
-        font-family: Arial, sans-serif;
-    }
-    li {
-        background: linear-gradient(to bottom,#d32aa9, #d32aa9, #d32aa9, #d32aa9); 
-        list-style-type: none;
-        margin: 0px;
-        padding: 10px;
-        border-radius: 10px;
-        color: white;
-        height: 100px;
-        opacity: 0.7;
-        font-weight: bold;
-    }
-    li span{
-        color: black;
-        opacity: 0.5;
-    }
-    p{
-        text-align: center;
-        font-size: 15px;
-    }
-    .strate{
-        font-size: 16px;
-        color: white;
-        opacity: 0.7;
-    }
-    .strate span{
-        color: red;
-        font-size: 16px;
-    }
-    .strategie{
-        color: gray;
-        font-weight: bold;
-        font-size: 16px;
-    }
-    .strategie span{
-        color: #2196F3;
-    }
-    .teams{
-        font-size: 16px;
-        color: white;
-        opacity: 0.7;
-                 }
-    .teams span{
-        color: red;
-        font-size: 16px;
-    }
-    .info{
-        color: #512DA8;
-        font-weight: bold;
-    }
-    .info span{
-        font-weight: bold;
-        font-size: 14px;
-        color: #2196F3;
-    }
-    .info span1{
-        font-size: 16px;
-        color: white;
-        font-weight: 700;
-        opacity: 0.6;
-    }
-    .info span2{
-        color: #512DA8;
-    }
-    .info span3{
-        color: #2196F3;
-    }
-    .info span4{
-        color: #2196F3;
-    }
-    .info span5{
-        color: #2196F3;
-    }
-    .live{
-        color: white;
-        opacity: 0.7;
-    }
-    .live span{
-        color: red;
-        font-size: 16px;
-    }
-    .match{
-        color: #2196F3;
-        font-weight: bold;
-        font-size: 14px;
-    }
-    .match span{
-        color: red;
-        font-size: 16px;
-    }
-    .match span1{
-        font-size: 16px;
-        color: white;
-        font-weight: 700;
-        opacity: 0.6;
-    }
-    .match span2{
-        color: #512DA8;
-    }
-    .match span4{
-        color: #512DA8;
-    }
-    .verifier{
-        font-weight: 800;
-        color: red;
-        opacity: 0.7;
-    }
-    .verifier span{
-        color: white;
-        font-weight: 700;
-    }
-    h6{
-        font-size: 13px;
-        color: white;
-        background-color: rgb(148, 7, 7);
-        border-radius: 7px;
-        margin: 10px;
-        text-align: center;
-        justify-content: center;
-        width: 110px;
-        height: 34px;
-    }
-    .name{
-        color: white;
-        font-weight: bold;
-        margin-bottom: 0.3rem;
-    }
-    .sujet{
-        color: white;
-        font-weight: bold;
-        margin-bottom: 0.3rem;
-    }
-    .msg{
-        color: white;
-        font-weight: bold;
-        margin-bottom: 0.3rem;
-    }
-    .submit{
-        color:#fff;
-        padding:0.75rem 1.5rem;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
-        font-weight:bold;
-    }
-    .message{
-        width:100%;
-        padding:0.75rem;
-        border:1px solid #ccc;border-radius:6px;
-        margin-bottom:1rem;
-        font-size:1rem;
-        background: gray;
-    }
-       :root{
-    --bg:#071025;
-    --card:#0f1724;
-    --accent:#7c4dff;
-    --danger:#ff4d4f;
-    --ok:#22c55e;
-    --muted:rgba(255,255,255,0.7);
-   }
-    *{box-sizing:border-box}
-    h3 span{
-        opacity: 0.7;
-        font-family: bold;
-        font-weight: 900;
-        padding: 6px;
-        font-size: 22px;
-        color: red;
-        display: grid;
-        width: 420%;
-        border-radius: 6px;
-        height: 40px;
-        background: #020617;
-    }
-    .wrap{
-        width:100%;
-        background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-        border-radius:14px;
-        padding:18px;
-        display:grid;
-        grid-template-columns: 320px 1fr;
-        gap:16px;
-        box-shadow: 0 20px 60px rgba(2,6,23,0.7);
-        border:1px solid rgba(255,255,255,0.03);
-    }
-    .panel{
-        padding:14px;
-        border-radius:10px;
-        background:rgba(255,255,255,0.02);
-    }
-    .title{ 
-        font-size:18px; 
-        font-weight:700;
-        margin:4px 0 10px 
-    }
-   .row{ 
-        display:flex; 
-        gap:8px;
-        align-items:center; 
-        margin-bottom:10px;
-    }
-    .case{
-        display:flex; 
-        align-items:center; 
-        margin-bottom:10px;
-        border-radius: 12px;
-    }
-    label{ 
-        font-size:13px;
-        color:var(--muted);
-        min-width:100px; 
-    }
-    .title{
-        color: white;
-    }
-    .big{
-        font-size:18px; 
-        font-weight:700; 
-        color:#66BB6A;
-        opacity: 0.7;
-        border-radius:10px; 
-        margin-left: 10%;
-    }
-    h5{
-        color: white;
-    }
-    button{
-        padding:10px 14px;
-        border-radius:10px;
-        border:0; cursor:pointer;
-        font-weight:700;
-    }
-    .btn-start{ 
-        background: linear-gradient(90deg,var(--accent), #5aa8ff);
-        margin:5px;
-        color: white; 
-        box-shadow: 0 10px 30px rgba(124,77,255,0.12)
-    }
-    .btn-cash{
-        background: linear-gradient(90deg,var(--ok), #60d394);
-        margin: 5px;
-        color:#022;
-        min-width:140px; 
-    }
-    .btn-disabled{ 
-        opacity:0.45;
-        color: white;
-        cursor:not-allowed; 
-    }
-    .small{
-        font-size:13px;
-        color:var(--muted); 
-    }
-
-    .game{
-        padding:14px;
-        border-radius:10px;
-        background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(255,255,255,0.01));
-        display:flex; 
-        flex-direction:column;
-        gap:5px; 
-        align-items:stretch;
-    }
-    .hud{
-        display:flex; 
-        align-items:center;
-        justify-content:space-between;
-        gap:12px;
-    }
-    .mult{
-        margin: 54px;
-        color: #66BB6A;
-        text-align: center;
-        font-size:40px; 
-        font-weight:900; 
-        letter-spacing:0.02em;
-    }
-    .status{
-        font-size:12px; 
-        color:var(--muted);
-    }
-
-    h4{
-        margin: -5px;
-        padding: 8px;
-        font-size: 16px;
-        background: #FF8F00;
-        height: 32px;
-        text-align: center;
-    }
-    h5{
-        margin: 5px;
-    }
-    .sky{
-        height:200px;
-        color: white;
-        background: linear-gradient(180deg,#06213d 0%, #051428 100%);
-        border-radius:12px;
-        position:relative;
-        overflow:hidden;
-        border:1px solid rgba(255,255,255,0.03);
-        }
-   .small{
-        font-size: 10px;
-    }
-    .plane{
-        width:84px; 
-        height:48px; 
-        color: red;
-        position:absolute; 
-        left:0px; bottom:0px;
-        transition: transform 2s ease, opacity .6s ease;
-        transform-origin:center;
-        font-size: 70px;
-        display: inline-block;
-        transform: rotate(-30deg);
-    }
-    .plane.taking-off{
-        transform: translate(240px, -140px) rotate(-40deg) scale(0.95);
-        transition: transform 40s cubic-bezier(.2,.9,.22,1);
-    }
-    .plane.crashed{
-        transform: translate(220px, 35px) rotate(40deg) scale(1.05);
-        opacity:0.18;
-    }
-    .trail{
-        position:absolute;
-        left:70px;
-        bottom:80px;
-        margin: -80px;
-        height:6px;
-        width:0px; 
-        background:linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
-        border-radius:4px; 
-        transition: width 5.7s linear;
-    }
-    .meter {
-        width: 80%;
-        margin-left: 20%;
-        height:8px; background:rgba(255,255,255,0.04);
-        border-radius:6px;
-        overflow:hidden;
-    }
-    .meter .fill { 
-        height:100%;
-        width:0%; 
-        background:linear-gradient(90deg,var(--accent), #5aa8ff); 
-        transition: width .3s linear;
-    }
-    .log{ 
-        font-size:13px; 
-        color:var(--muted); min-height:22px;
-    }
-    .msg-ok{ 
-        color:var(--ok);
-        font-weight:700;
-    }
-    .msg-bust{ 
-        color:var(--danger);
-        font-weight:800;
-    }
-    .kbd{ 
-        font-weight:700;
-        background:rgba(255,255,255,0.03);
-        padding:4px 6px; border-radius:6px;
-        font-size:13px;
-    }
-    @media(max-width:880px){
-    .wrap{ grid-template-columns: 1fr; }
-    }
-    </style>
-<body>
-    <div class="page active" id="page-login">
-    <div class="plane-icon">✈</div>
-    <div class="login-box">
-    <h1>AVIATOP V2.6.1</h1>
-    <h2>Veuillez completez ces cases pour voirs des tours Aviators sur le Site de www.BET261.mg ou Contactez la createur du Site Web pour vous aidez a entrez dans ce login. </h2>
-    <input type="Email" id="Email Adress" placeholder="📧 Email Adress">
-    <input type="password" id="password" placeholder="🔑 Mot de passe">
-            
-
-    <button onclick="login()">Login</button>
-   <div class="service">SERVICES :</div>
-    <div class="cont">
-        <h0>Page Facebook : <span>Eskel pronos</span></h0><br>
-    <h7>Whats up: <span>+261347105558</span></h7><br>
-    <h01>Email : <span>Eskelrakotoharilala@gmail.com</span></h01>
+    textarea:focus {outline: none;color: #EF9A9A;border-color: #2196F3;box-shadow: 0 0 8px #42A5F5;background-color: transparent;}
+    textarea {background-color: transparent;resize: vertical;min-height: 120px;}
+    button {background-color: #5d5dfc;text-align: center;border-radius: 6px;color: white;border: none;padding: 12px 25px;font-size: 1.1em;font-weight: bold;cursor: pointer;width: 100%;transition: background-color 0.3s ease;}
+    input, button {width: 100%;padding: 10px;margin: 10px 0;border-radius: 5px;border: none;}
+    .hint {font-size: 15px;color: white;margin-top: 15px;opacity: 0.6;}
+    .infos{width: 80%;margin-left: 10%;margin-top: 5%;background-color: #1a1a2e;padding:2rem;border-radius:8px;box-shadow:0 2px 8px #F44336;}
+    .infos h2{color: red;opacity: 0.6;}
+    .infos h3{margin-top:1rem;color:blue;}
+    .infos p{ margin:0.3rem 0;color:white;opacity:0.7;}
+    .pubs{max-width:1000px;margin:2rem auto;padding:0 1rem;}
+    .pubs h2 {color: black;}
+    .pubs iframe{width:100%;height:400px;border:0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+        .faq{max-width:800px;font-size:13px;padding:1rem;}
+    .faq h2{text-align:center;color:black;margin-bottom:2rem;}
+    .faq-item{border:1px solid #ddd;border-radius:6px;margin-bottom:1rem;overflow:hidden;}
+    .faq-question{width:100%;color:black;padding:1rem;text-align:left;background:#f9f9f9;cursor:pointer;font-weight:bold;display:flex;justify-content:space-between;align-items:center;}
+    .faq-answer{display:none;padding:1rem;background:#FFCDD2;color:black;opacity:0.8;border-radius:3px;}
+    .rotate{transform:rotate(180deg);}
+    table {text-align: left;width: 100%;}
+    .nav {background: transparent;display: flex;justify-content: center;gap: 0.8em;padding: 1em;box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);border-radius: 8px;}
+    .nav a {color: #B2EBF2;text-decoration: none;font-weight: bold;font-size: 17px;transition: color 0.3s, transform 0.2s;perspective: 500px;}
+    .nav a:active {transform: rotateX(15deg) translateZ(5px);color: #0984e3;transition: transform 0.1;}
+    .nav a:hover {color: #0984e3;}
+    section {display: none;max-width: 340px;margin: 2em auto;padding: 2em;background: #B3E5FC;border-radius: 12px;box-shadow: 0 0 8px #42A5F5;color: #222;}
+    section.active {display: block;animation: fadeIn 0.5s ease-in-out;}
+    h2 {color: #0984e3;font-size:19px;margin-top: 0;position: relative;overflow: hidden;}
+    .warning-box {background-color: rgb(148, 7, 7);border: 1px solid #ff0000;border-radius: 12px;padding: 15px;margin: 30px 0;display: flex;align-items: center;font-weight:500;font-size: 0.9em;color: #ffffff;}
+    .warning-icon {font-size: 1.5em;color: #ff0000;margin-right: 10px;}
+    .warning-text {font-size: 15px;text-align: center;flex-grow: 1;line-height: 1.4;}
+    .service{font-size: 16px;font-weight: bold;text-align: center;background: green;padding: 5px;color: white;}
+    .client {font-size: 14px;background: #42A5F5;height: 6%;color: #EF5350;font-weight: 500;}
+    .client h7{margin-left:5%;}
+    .client h01{margin-left: 5%;}
+    h6{font-size: 13px;color: white;background-color: rgb(148, 7, 7);border-radius: 7px;margin: 10px;text-align: center;justify-content: center;width: 110px;height: 34px;}
+    .teams{font-size: 16px;color: black;opacity: 0.7;}
+    .teams span{color: red;font-size: 16px;}
+    .info{color: #512DA8;font-weight: bold;}
+    .info span{font-weight: bold;font-size: 14px;color: #2196F3;}
+    .info span1{font-size: 16px;color: black;font-weight: 700;opacity: 0.6;}
+    .info span2{color: #512DA8;}
+    .info span3{color: #2196F3;}
+    .info span4{color: #2196F3;}
+    .info span5{color: #2196F3;}
+    .live{color: black;opacity: 0.7;}
+    .live span{color: red;font-size: 16px;}
+     .match{color: #2196F3;font-weight: bold;font-size: 14px;}
+    .match span{color: red;font-size: 16px;}
+    .match span1{font-size: 16px;color: black;font-weight: 700;opacity: 0.6;}
+    .match span2{color: #512DA8;}
+    .match span4{color: #512DA8;}
+    .strate{font-size: 16px;color: black;opacity: 0.7;}
+    .strate span{color: red;font-size: 16px;}
+    .strategie{color: gray;font-weight: bold;font-size: 16px;}
+    .strategie span{color: #2196F3;}
+    .verifier{font-weight: 800;color: red;opacity: 0.7;}
+    .verifier span{color: black;font-weight: 700;}
+    .name{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
+    .sujet{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
+    .msg{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
+    .message{width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:6px;border-color: #2196F3;margin-bottom:1rem;font-size:1rem;background: transparent;}
+    input[type="number"],
+    input[type="text"] {width: 100%;padding: 12px 15px;background-color: transparent;border: 1px solid #2196F3;border-radius: 8px;color: black;font-size: 1.1em;box-sizing: border-box;outline: none;transition: border-color 0.3s ease, box-shadow 0.3s ease;}
+    input[type="number"]:focus,
+    input[type="text"]:focus {border-color: #2196F3;box-shadow: 0 0 8px #42A5F5;}
+    input::placeholder {color: #7A5BBD;}
+    .video {width:80%;margin:10%; padding:4rem 1rem; text-align:center; background:white;}
+    .video iframe {width:80%; max-width:800px; height:300px; border:none; border-radius:12px;}
+    .submit{color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:6px;cursor:pointer;font-weight:bold;}
+    .prediction-title {font-size: 1.2em;margin: 10;lettre-spacing: 2px;color: #C62828;margin-bottom: 20px;padding: 5px;border-radius: 10px;text-align: center;}
+    .label-with-icon {display: flex;align-items: center;font-size: 0.9em;color: #9B6ED9;margin-bottom: 8px;font-weight: 600; }
+   .label-with-icon svg {margin-right: 8px;color: #9B6ED9;width: 18px;height: 18px;}
+    .percentage-bar {width: 100%;background: #C62828;height: 19px;border-radius: 10px;margin-top: 10px;}
+    .percentage-fill {height: 100%;background: #4CAF50;border-radius: 10px;width: 0%;}
+    footer {text-align: center;background: #0a3d62;color: #a2b1c6;padding: 1em;margin-top: 3em;font-size: 0.9em;border-radius: 0 0 12px 12px;}
+    #accueil h2 {animation: slideInFromLeft 1s ease forwards;}
+    #accueil p {animation: fadeInText 2s ease forwards;opacity: 0;}
+    @keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInFromLeft {0% {opacity: 0;transform: translateX(-100%);}
+      100% {opacity: 1;transform: translateX(0);}
+    }
+    @keyframes fadeInText {to { opacity: 1; }
+    }
+    article {margin-bottom: 2em;}
+    body h3{justify-content: center;color: red;
+        font-family: Arial, sans-serif;}
+    li {background: linear-gradient(to bottom,#d32aa9, #d32aa9, #d32aa9, #d32aa9); list-style-type: none;margin: 0px;padding: 10px;border-radius: 10px;color: white;8height: 100px;opacity: 0.7;font-weight: bold;}
+    li span{color: black;opacity: 0.5;}
+    p{text-align: center;font-size: 15px;}
+</style>
+    
+   <body>
+<div class="page active" id="page-login">
+    <div class="tete">
+        <h5>AVIATOR V2.6.1</h5>
     </div>
-    <div class="live-indicator">
-    <p class="server-time">Server time: 2025/09/20 // 12:06</p>
+    <div class="hero">
+        <h1>BIENVENUE</h1>
+        <p>Nous sommes là pour vous aidez à donner des tours predicts sur le site de www.bet.mg sur le jeu Aviator .</p>
+    </div>
+    <div class="Container">
+    <div class="icon">🔐</div>
+    <div class="login-box">
+        <h1>Code d'Activation Requis</h1>
+        <h2>Entrer votre code pour acceder au predicteur. </h2>
+    <input type="Email" id="Email Adress" placeholder="Email Adress">
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="login()">Login</button>
+    <div class="hint">🔰 Analyser avec porvably fair  </div>
+    </div>
+</div>
+    <div class="infos">
+        <h2>🇲🇬 Nos coordonnées</h2>
+        <h3>Email :</h3>
+        <p>TechAviator25@gmail.com</p>
+        <p>aviator261@gmail.com</p>
+        <h3>Whats up :</h3>
+        <p>+261 34 71 055 58</p>
+    </div>
+    <div class="video" id="video">
+  <h2>PUBS</h2>
+  <iframe src="https://www.youtube.com/embed/dFUlAQZB9Ng" allowfullscreen></iframe>
+</div>
+    <div class="faq">
+        <h2>Questions fréquentes</h2>
+    <div class="faq-item">
+    <button class="faq-question">Pendant quel mois la nouvelle mise a jour ? <span>▼</span></button>
+    <div class="faq-answer"><p>Le mise a jour se deroule dans une mois a peut pres .</p></div>
+    </div>
+    <div class="faq-item">
+    <button class="faq-question">Pourquoi il faut suivre la strategie Tech ? <span>▼</span></button>
+    <div class="faq-answer"><p>La strategie Tech qui nous analyse les tours predict donc quand vous ne suivez pas cette strategie les tours sont faux .</p></div>
+    </div>
+    <div class="faq-item">
+    <button class="faq-question">Est-ce-que le Site ou l'Apps Aviator V2.6.1 est tres bonnes en prediction ? <span>▼</span></button>
+    <div class="faq-answer"><p>Oui, car cette Site ou l'Apps est l'unique qui analyse des tours aviators sur www.bet.mg, quand vous ne@croyez pas contactez nous .</p></div>
         </div>
+    </div>
+        <footer>
+        &copy; 2025 | TechEvolution.
+    </footer>
+</div>
+
+<div class="page" id="page-main">
+    <div class="tete">
+        <h5>AVIATOR V2.6.1</h5>
+    <div class="nav">
+        <a href="#accueil" onclick="showSection('accueil')">Accueil</a>
+        <a href="#Strategies" onclick="showSection('Strategies')">Strategies</a>
+        <a href="#Prediction" onclick="showSection('Prediction')">Prediction</a>
+        <a href="#Contact" onclick="showSection('Contact')">Contact</a>
     </div>
 </div>
     
-<div class="page" id="page-main">
-    <header>
-    <div class="plane-icon">✈</div>
-    <h1>AVIATOP V2.6.1</h1>
-    <p id="subtitle">Pour avoir des tours Aviators sur www.bet261.mg click sur prediction. </p>
-    <div class="lang-switch">
-</div>
-    </header>
-
-<nav>
-    <a href="#accueil" onclick="showSection('accueil')">Accueil</a>
-    <a href="#Strategies" onclick="showSection('Strategies')">Strategies</a>
-    <a href="#Prediction" onclick="showSection('Prediction')">Prediction</a>
-        <a href="#Distraction" onclick="showSection('distration')">Distraction</a>
-    <a href="#Contact" onclick="showSection('Contact')">Contact</a>
-</nav>
-
 <section id="accueil" class="active">
-    <h2>Bienvenue</h2>
-    <p>Découvrez nos tours prediction. </p>
+        <h2>Bienvenue</h2>
+        <p>Découvrez nos tours prediction. </p>
     <div class="warning-box">
-    <span class="warning-icon">&#9888;</span><div class="warning-text">ATTENTION : Cette prédiction est base sur une strategie 📊 et une logiciel IA, elle n'est donc pas garantie à 100%.</div>
-    <span class="warning-icon">&#9888;</span>
+        <span class="warning-icon">&#9888;</span><div class="warning-text">ATTENTION : Cette prédiction est base sur une strategie 📊, elle n'est donc pas garantie à 100%.</div>
+        <span class="warning-icon">&#9888;</span>
     </div>
     <div class="service">SERVICES :</div>
-    <div class="cont">
-        <h0>Page Facebook : <span>Eskel pronos</span></h0><br>
+    <div class="client">
     <h7>Whats up: <span>+261347105558</span></h7><br>
-    <h01>Email : <span>Eskelrakotoharilala@gmail.com</span></h01>
+    <h01>Email : <span>TechAviator25@gmail.com</span></h01>
     </div>
 </section>
 
 <section id="Strategies">
-    <h6>🔵 Depart cote manga :</h6>
+        <h6>🔵 Depart cote manga :</h6>
     <div class="teams"><span>1) </span> Rehefa manga 1 no ao ampivonina violet, ka violet roa ny fiantombohany dia violet 2 koa ny fiafarany.</div>
-    <p1 class="info"><span1>Oh: </span1><span5>1.34x, </span5><span2>2.21x,</span2> 6.07x, <span4>1.05x, </span4> 3.34x, 2.78x, <span5>1.24x</span5> ✅</p1>
-   
+        <p1 class="info"><span1>Oh: </span1><span5>1.34x, </span5><span2>2.21x,</span2> 6.07x, <span4>1.05x, </span4> 3.34x, 2.78x, <span5>1.24x</span5> ✅</p1>
     <div class="live"><span>2) </span> Rehefa violet 1 no manomboka ka manga bedebe no ao ampivony ka faranany violet 1 koa .</div>
-    <p1 class="match"><span1>Oh: </span1>1.34x, <span2>2.21x, </span2> 6.07x, 1.05x, 3.34x, <span4>2.78x, </span4><span3>1.24x</span3>✅</p1>
-
+        <p1 class="match"><span1>Oh: </span1>1.34x, <span2>2.21x, </span2> 6.07x, 1.05x, 3.34x, <span4>2.78x, </span4><span3>1.24x</span3>✅</p1>
     <div class="strate"><span>3) </span> Rehefa mahita manga 5 mifanesy dia ao aorinany iny tsy maintsy misy tour violet na rose </div>
-    <p1 class="strategie"><span1>Oh :</span1><span> 1.24x, 1.76x, 1.34x, 1.99x, 1.00x </span>✅</p1>
-   
+        <p1 class="strategie"><span1>Oh :</span1><span> 1.24x, 1.76x, 1.34x, 1.99x, 1.00x </span>✅</p1>
     <div class="verifier"><span>Fanamafisana :</span> Rehefa tsy manaraka an'ireo strategie ireo dia lasa diso cote angalana an'ilay tour tokony analysena enao, ka mamoka tour ratsy ilay prediction, ka mitandrema tsara.</div>
 </section>
 
 <section id="Contact">
     <form>
-    <h2>Envoyez-nous un message</h2>
-    <label for="name" class="name">Nom complet</label>
+        <h2>Envoyez-nous un message</h2>
+    <label for="name" class="name">Nom complet :</label>
     <input type="text" id="name" required>
-    <label for="subject" class="sujet">Sujet</label>
+    <label for="subject" class="sujet">Sujet :</label>
     <input type="text" id="subject">
-    <label for="message" class="msg">Message</label>
+    <label for="message" class="msg">Message :</label>
     <textarea id="message" rows="5"class="message" placeholder="envoyer nous des messages a propos du site ..." ></textarea>
     <button type="submit" class="submit">Envoyer le message</button>
     </form>
 </section>
 
 <section id="Prediction">
-    <h1 class="prediction-title">Résultat de la Prédiction</h1>
+    <div class="warning-box">
+        <span class="warning-icon">&#9888;</span><div class="warning-text">ATTENTION : Veuillez suivez la strategie Tech avant de calculer .</div>
+        <span class="warning-icon">&#9888;</span>
+    </div>
+        <h1 class="prediction-title">Résultat de la Prédiction</h1>
     <table>
     <tr><th><label for="tourInput" class="label-with-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
@@ -823,7 +240,6 @@
     <line x1="3" y1="18" x2="3.01" y2="18">
     </svg>Tours ( 01-99 ) :</line></th></tr>
     <tr><td><input type="number" id="tour-number" placeholder="Ex: 99"></td></tr>
-        
     <tr><th><label for="coteInput" class="label-with-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -840,389 +256,68 @@
             <tr><td></td></tr>
     </table>
     <div class="percentage-bar">
-        <div class="percentage-fill" id="percentage-fill"></div>
+    <div class="percentage-fill" id="percentage-fill"></div>
         </div>
     <center><button onclick="calculer()">Calcule prédiction</button></center>
         </div>
     </div>
 </section>
-<section id="distration">
-    <div class="game" role="region" aria-label="Zone de jeu">
-    <div class="case">
-        <h3><span>CRASH</span></h3>
+ </body>
 
-        <label></label>
-    <div class="big" id="balance">5000.00</div>
-        <h5>MGA</h5>
-    </div>
-    
-    <div class="hud">
-    <div>
-</div>
-
-    <div style="display:flex; justify-content:space-between; margin-top:8px;">
-    </div>
-</div>
-
-    <div class="sky" id="sky">
-        <h4>CRASH DEMO</h4>
-    <div class="trail" id="trail" aria-hidden="true"></div>
-
-    <div class="plane" id="plane">✈</div>
-
-<!-- crash visual (simple) -->
-    <div id="crashMark" style="position:absolute; right:240px; top:100px; color:var(--danger); font-weight:900; font-size: 26px; display:none"></div>
-    <div class="mult" id="multiplier">x1.00</div>
-    <div class="status" id="status">Prêt</div>
-    </div>
-
-    <div style="display:flex; align-items:center; justify-content:space-between;">
-    <div id="log" class="log">Appuie sur <span class="kbd">Demarrer</span> pour lancer une manche.</div>
-    <div>
-        
-    <button id="resetBtn" class="small btn-disabled" style="background:transparent;border:1px solid rgba(255,255,255,0.04); color:var(--muted); border-radius:8px">Reset</button>
-    </div>
-</div>
-
-    <div class="wrap" role="application" aria-label="Jeu Avion">
-    <div class="panel" aria-hidden="false">
-    <div class="title">Contrôles</div>
-    <div style="min-width:220px">
-    <div class="meter" aria-hidden="true"><div id="meterFill" class="fill"></div></div>
-    <div class="small">Mise: <span id="uiBet">10</span></div>
-    <div class="small">Potentiel: <span id="potential">10.00</span></div>
-    </div>
-
-    <div class="row">
-        <label for="bet">Mise</label>
-        <input id="bet" placeholder="Ex: 500 MGA" type="number" min="1" step="1" value="" />
-    </div>
-
-    <div class="row">
-        <label for="autoCash">Auto-cashout</label>
-        <input id="autoCash" placeholder="Ex: 2.21" type="number" min="1.1" step="0.1" value="" />
-    </div>
-
-    <div class="row">
-        <label for="autoPlay">Auto-play</label>
-        <input id="autoPlay" type="checkbox" />
-        <span class="small" style="margin-left:auto"></span>
-    </div>
-
-    <div style="display:flex; gap:8px; margin-top:10px;">
-    <button id="startBtn" class="btn-start">Démarrer</button>
-    <button id="cashBtn" class="btn-cash btn-disabled" disabled>Cash Out</button>
-    </div>
-
-    <div style="margin-top:12px;">
-    <div class="small">Dernier résultat :</div>
-    <div id="lastResult" class="log">—</div>
-    </div>
-</div>
-</button>
-    </form>
-</section>
-
-    <footer>
-        &copy; 2025 TechEvolution.
-    </footer>
-
-<script>
+    <script>
     function login() {
     const user = document.getElementById('Email Adress').value;
     const pass = document.getElementById('password').value;
-
-    if (user === 'aviator261@gmail.com' && pass === 'Z6XE90') {
+    if (user === '' && pass === '') {
     document.getElementById('page-login').classList.remove('active');
     document.getElementById('page-main').classList.add('active');
     } else {
     alert("Email Adress ou mot de passe incorrect");
         }
     }
-  const sections = ["accueil", "Strategies", "Prediction", "distration", "Contact"];
-
+  const sections = ["accueil", "Strategies", "Prediction", "Contact"];
   function showSection(id) {
     sections.forEach(sec => {
       const el = document.getElementById(sec);
       if (el) {
         el.classList.toggle("active", sec === id);
-      }
+        }
     });
-  }
+}
     function calculer() {
     const tour = parseInt(document.getElementById('tour-number').value);
     const cote = document.getElementById('cote-value').value;
-
     if (!tour || !cote.startsWith('X1.')) {
     alert("Veuillez entrer une tour valider avec une côte minimum de X2.00");
     return;
         }
-
     let results = [];
     let start = (tour + 2 * 6 * 1) % 100;
-
     for (let i = 0; i < 3; i++) {
     results.push((start + i) % 100);
         }
-
     let html = '<h3>Tours prédicts :✅ </h3><ul>';
     results.forEach(t => {
     let tDisplay = t < 5 ? '00' + t : (t < 100 ? '***' + t : t);
-    html += `<li>🎯 TOURS <span>${tDisplay}</span><p>Cette tours n'est pas garentie a 💯% <p></li><br><br>`;
-        
+    html += `<li>🎯 TOURS <span>${tDisplay}</span><p>Cette tours n'est pas garentie a 100% <p></li><br><br>`;
     });
     html += '</ul>';
-
     document.getElementById('result').innerHTML = html;
-
     const pourcentage = Math.floor(Math.random() * (75 - 60 + 1)) + 60;
     document.getElementById('percentage-fill').style.width = pourcentage + '%';
         }
   function switchLang(lang) {
     alert("Fonction de changement de langue à implémenter (" + lang + ")");
   }
-
   window.addEventListener("DOMContentLoaded", () => {
     showSection("accueil");
   });
-  
-  const balanceEl = document.getElementById('balance');
-const betInput = document.getElementById('bet');
-const autoCashInput = document.getElementById('autoCash');
-const startBtn = document.getElementById('startBtn');
-const cashBtn = document.getElementById('cashBtn');
-const multiplierEl = document.getElementById('multiplier');
-const statusEl = document.getElementById('status');
-const uiBet = document.getElementById('uiBet');
-const potentialEl = document.getElementById('potential');
-const meterFill = document.getElementById('meterFill');
-const plane = document.getElementById('plane');
-const trail = document.getElementById('trail');
-const lastResult = document.getElementById('lastResult');
-const autoPlayCheckbox = document.getElementById('autoPlay');
-const crashMark = document.getElementById('crashMark');
-
-let balance = 5000.00;
-let currentBet = 10;
-let gameRunning = false;
-let multiplier = 1.0;
-let rafId = null;
-let round = 0;
-let cashedOut = false;
-let currentPayout = 0;
-let waitingForMultiplier = false;
-let multiplierStartedAt = 0;
-let crashAtTime = 0;
-let autoCash = parseFloat(autoCashInput.value) || null;
-let autoPlay = false;
-
-function format(n){ return Number(n).toFixed(2); }
-function setBalance(v){ balance = Math.max(0, Number(v)); balanceEl.textContent = format(balance); }
-setBalance(balance);
-uiBet.textContent = betInput.value;
-potentialEl.textContent = format(Number(betInput.value)*1.00);
-
-function updateUI(){
-  uiBet.textContent = betInput.value;
-  potentialEl.textContent = format(Number(betInput.value) * (parseFloat(multiplier).toFixed(2) || 1));
-  document.getElementById('uiBet').textContent = betInput.value;
-}
-
-betInput.addEventListener('input', ()=> { updateUI() });
-autoCashInput.addEventListener('input', ()=> { autoCash = parseFloat(autoCashInput.value) || null; });
-
-startBtn.addEventListener('click', startRound);
-cashBtn.addEventListener('click', cashOut);
-
-document.getElementById('resetBtn').addEventListener('click', ()=>{
-  setBalance(5000);
-  lastResult.textContent = 'Remis à zéro.';
-});
-
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter'){ startRound(); }
-  if(e.code === 'Space'){ e.preventDefault(); cashOut(); }
-  if(e.key === 'ArrowUp'){ betInput.value = Math.max(1, Number(betInput.value) + 1); updateUI(); }
-  if(e.key === 'ArrowDown'){ betInput.value = Math.max(1, Number(betInput.value) - 1); updateUI(); }
-});
-
-function startRound(){
-  if(gameRunning || waitingForMultiplier) return;
-  currentBet = Number(betInput.value) || 0;
-  if(currentBet <= 0){ alert('Mise invalide'); return; }
-  if(currentBet > balance){ alert('Balance insuffisante'); return; }
-
-  // prepare round
-  round++;
-  cashedOut = false;
-  multiplier = 1.0;
-  currentPayout = 0;
-  setBalance(+(balance - currentBet));
-  statusEl.textContent = 'Décollage...';
-  multiplierEl.textContent = `x${multiplier.toFixed(2)}`;
-  lastResult.textContent = `Manche #${round} — avion décollé. Multiplicateur démarre dans 5s.`;
-  meterFill.style.width = '0%';
-  crashMark.style.display = 'none';
-
-  // show plane takeoff animation
-  plane.classList.remove('crashed');
-  void plane.offsetWidth;
-  plane.classList.add('taking-off');
-  trail.style.width = '0px';
-  setTimeout(()=> { trail.style.width = '180px'; }, 120);
-
-  // after plane takes off we wait 5s before multiplier begins
-  waitingForMultiplier = true;
-  gameRunning = false;
-  startBtn.classList.add('btn-disabled');
-  startBtn.disabled = true;
-  cashBtn.classList.add('btn-disabled'); cashBtn.disabled = true;
-
-  let countdown = 5;
-  let countdownInterval = setInterval(()=> {
-    statusEl.textContent = `Démarrage du multiplicateur dans ${countdown}s`;
-    countdown--;
-    if(countdown < 0){
-      clearInterval(countdownInterval);
-      waitingForMultiplier = false;
-      beginMultiplier();
-    }
-  }, 1000);
-}
-
-/* démarre la boucle qui augmente le multiplicateur */
-function beginMultiplier(){
-  if(gameRunning) return;
-  gameRunning = true;
-  multiplierStartedAt = performance.now();
-  // crash time en secondes après le début du multiplicateur (aléatoire)
-  // min 1.1s -> max 12s (ajuste si tu veux)
-  const crashSeconds = (Math.random() * 10.5) + 1.1;
-  crashAtTime = multiplierStartedAt + crashSeconds * 1000;
-
-  // croissance : on utilisera une exponentielle contrôlée
-  // multiplier(t) = 1 + (e^(rate * t) - 1) * scale
-  const rate = 0.6; // vitesse de montée
-  const scale = 1.2;
-
-  statusEl.textContent = 'En vol — multiplicateur en cours';
-  startBtn.classList.add('btn-disabled');
-  startBtn.disabled = true;
-  cashBtn.classList.remove('btn-disabled'); cashBtn.disabled = false;
-
-  // animation loop
-  function loop(now){
-    const elapsed = (now - multiplierStartedAt) / 6000; // sec
-    // expo growth for ressenti similaire à Aviator
-    multiplier = Math.max(1.0, 1 + (Math.exp(rate * elapsed) - 1) * scale);
-    // clamp display
-    if(!isFinite(multiplier) || multiplier > 1000) multiplier = 1000;
-
-    multiplierEl.textContent = `x${multiplier.toFixed(2)}`;
-
-    // meter fill - relative to potential of crashSeconds / 12s (visuel)
-    let fillPct = Math.min(100, ((now - multiplierStartedAt) / (12*1000)) * 100);
-    meterFill.style.width = fillPct + '%';
-
-    // auto cashout check
-    if(!cashedOut && autoCash && multiplier >= autoCash){
-      cashOut(true);
-      // don't return here, allow instant cashout to stop before bust
-    }
-
-    // crash check
-    if(now >= crashAtTime){
-      // bust: plane crash
-      gameRunning = false;
-      cashedOut = false;
-      cancelAnimationFrame(rafId);
-      rafId = null;
-      onBust();
-      return;
-    }
-
-    // continue loop
-    rafId = requestAnimationFrame(loop);
-  }
-
-  rafId = requestAnimationFrame(loop);
-}
-
-/* cash out function */
-function cashOut(isAuto=false){
-  if(!gameRunning) return;
-  if(cashedOut) return;
-  cashedOut = true;
-  gameRunning = false;
-  cancelAnimationFrame(rafId);
-  rafId = null;
-
-  // calculate payout (truncate to 2 decimals)
-  const payout = Math.max(0, +(currentBet * multiplier).toFixed(2));
-  currentPayout = payout;
-  setBalance(+(balance + payout)); // ajoute payout à la balance
-  multiplierEl.textContent = `x${multiplier.toFixed(2)}`;
-  statusEl.innerHTML = `<span class="msg-ok">CASHOUT x${multiplier.toFixed(2)}</span>`;
-  lastResult.textContent = `Gagné ${format(payout)} (mise ${format(currentBet)}) — round #${round}`;
-  cashBtn.classList.add('btn-disabled'); cashBtn.disabled = true;
-
-  // plane stays in air then slowly reset
-  plane.classList.remove('taking-off');
-  setTimeout(()=> { plane.style.opacity = '1'; }, 200);
-
-  // auto-play
-  if(autoPlayCheckbox.checked){
-    setTimeout(()=> {
-      // reset plane visuals and start next round
-      plane.classList.remove('crashed');
-      plane.style.opacity = '';
-      startBtn.disabled = false;
-      startBtn.classList.remove('btn-disabled');
-      startRound();
-    }, 1200);
-  } else {
-    startBtn.disabled = false;
-    startBtn.classList.remove('btn-disabled');
-  }
-}
-
-/* bust (crash) handler */
-function onBust(){
-  multiplierEl.textContent = `x${multiplier.toFixed(2)}`;
-  statusEl.innerHTML = `<span class="msg-bust">💥Crash</span>`;
-  lastResult.textContent = `Perdu ${format(currentBet)} (mise) — round #${round}`;
-  crashMark.style.display = 'block';
-  plane.classList.remove('taking-off');
-  plane.classList.add('crashed');
-
-  // cash button disabled
-  cashBtn.classList.add('btn-disabled'); cashBtn.disabled = true;
-
-  // auto-play restart?
-  if(autoPlayCheckbox.checked){
-    setTimeout(()=> {
-      // small reset visual
-      plane.classList.remove('crashed');
-      crashMark.style.display = 'none';
-      startBtn.disabled = false;
-      startBtn.classList.remove('btn-disabled');
-      startRound();
-    }, 1800);
-  } else {
-    startBtn.disabled = false;
-    startBtn.classList.remove('btn-disabled');
-  }
-}
-
-/* util */
-function format(n){ return Number(n).toFixed(2); }
-function setBalance(v){ balance = Number(v); balanceEl.textContent = format(balance); }
-function updateBetUI(){ uiBet.textContent = betInput.value; potentialEl.textContent = format(Number(betInput.value) * Number(multiplier || 1).toFixed(2)); }
-betInput.addEventListener('change', updateBetUI);
-
-/* initial UI */
-updateUI();
-setBalance(balance);
-</script>
-    </body>
+  // FAQ toggle
+  document.querySelectorAll(".faq-question").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const answer=btn.nextElementSibling;
+      answer.style.display=answer.style.display==="block"?"none":"block";
+    });
+}); 
+    </script>
 </html>
