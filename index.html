@@ -1,323 +1,864 @@
-   
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechAVIATOR2025</title>
+    <title>Techpronos</title>
 </head>
 <style>
-    * {box-sizing: border-box;}
-    body {font-family: 'Segoe UI', sans-serif;margin: 0;background: white;}
-    .page {display: none;padding: 0px;}
-    .active {display: block;}
-    .active p{color: black;font-weight: bold;}
-    .tete{background: #0a3d62;padding: 6px;}
-    .tete h5{margin-left: 33%;color: #E53935;font-size: 20px;}
-    h5{margin: 5px;}
-    .hero{padding:1rem 1rem 3rem;background:linear-gradient(135deg,#1e3c72,blue);color:#fff;text-align:center;}
-    .hero h1{font-size:2.2rem;margin-bottom:1rem;lettre-spacing: 2px;text-shadow: 0 0 8px #74b9ff;margin-bottom: 20px;padding: 5px;border-radius: 10px;}
-    .hero p{font-size:1.2rem;max-width:700px;margin:auto;color: white;font-weight: 400;
+    header {
+        background: #0a3d62;
+        color: #fff;
+        text-align: center;
+        padding: 1em 1em;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(10, 61, 98, 0.3);
     }
-    .Container{width: 80%;margin-left: 10%;margin-top: 3%;background-color: #1a1a2e;padding:2rem;border-radius:8px;box-shadow:0 2px 8px #42A5F5;}
-    .icon {text-align: center;font-size: 53px;
+    header h1 {
+        font-size: 2.0em;
+        margin: 0;
+        color: #74b9ff;
     }
-    .login-box {text-align: center;color: white;}
-    .login-box input {width: 100%;height: 30px;outline: none;background-color: transparent;border: 1px solid #42A5F5;border-radius: 40px;font-size: 16px;color: black;padding: 20px 45px 20px 20px;}
-    .login-box input::placeholder{color: gray;background-color: transparent;}
-    .login-box h1 {color: #29B6F6;text-align: center;font-size: 27px;}
-    .login-box h2 {text-align: center;font-size: 16px;opacity: 0.8;font-weight: 300;color: white;}
+    header p {
+        margin: 0.5em 0 1em;
+        color: #a2b1c6;
+        font-style: italic;
+    }
+    nav {
+        background: #dfe6e9;
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+    }
+    nav a {
+        color: #0a3d62;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 10px;
+        font-size: 1.0em;
+        transition: color 0.3s, transform 0.2s;
+        perspective: 500px;
+    }
+    nav a:active {
+        transform: rotateX(15deg) translateZ(5px);
+        color: #0984e3;
+        transition: transform 0.1s;
+    }
+    nav a:hover {
+        color: #0984e3;
+    }
+    section {
+        display: none;
+        max-width: 900px;
+        margin: 2em auto;
+        padding: 2em;
+        background: #B3E5FC;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(10, 61, 98, 0.1);
+        color: #222;
+    }
+    section.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    h2 {
+        color: #2e7d32;
+    }
+    .hero {
+        color: #fff;
+        text-align: center;
+    }
+    .hero p {
+        font-size: 17px;
+        max-width: 700px;
+        margin: auto;
+        color: black;
+        font-weight: 400;
+    }
+    /* === ANIMATION DU TEXTE SUR L'ACCUEIL === */
+    #accueil h2 {
+        animation: slideInFromLeft 1s ease forwards;
+    }
+@keyframes slideInFromLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .warning-box {
+        background-color: #B71C1C;
+        border: 1px solid #ff0000;
+        text-align: center;
+        opacity: 0.8;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+        color: #ffffff;
+    }
+    .warning-icon {
+        font-size: 1.5em;
+        color: yellow;
+        margin-right: 10px;
+    }
+    .warning-text {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-weight: 500;
+    }
+    .service {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        background: green;
+        padding: 5px;
+        color: white;
+        border-radius: 8px;
+    }
+    .client {
+        font-size: 14px;
+        background: #B3E5FC;
+        height: 6%;
+        color: #ce4b49;
+        font-weight: 500;
+    }
+    .client span {
+        color: #ff8a65;
+        opacity: 0.9;
+    }
+    .client span1 {
+        color: #ff8a65;
+        opacity: 0.9;
+    }
+    footer {
+        text-align: center;
+        background: #0a3d62;
+        color: #a2b1c6;
+        padding: 1em;
+        margin-top: 3em;
+        font-size: 0.9em;
+        border-radius: 0 0 12px 12px;
+    }
+    .faq {
+        margin-left: auto;
+        max-width: 900px;
+        font-size: 13px;
+        padding: 1rem;
+    }
+    .faq h4 {
+        text-align: center;
+        color: #2196F3;
+        font-size: 17px;
+    }
+    .faq-item {
+        border: 1px;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+    .faq-question {
+        width: 100%;
+        color: black;
+        padding: 1rem;
+        text-align: left;
+        background: #f9f9f9;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .faq-answer {
+        display: none;
+        padding: 1rem;
+        font-size: 15px;
+        text-align: center;
+        color: black;
+        background: #FFCDD2;
+        border-radius: 3px;
+    }
+    h3 {
+        color: #0984e3;
+        font-size: 19px;
+    }
     input[type="email"]:focus,
     input[type="password"]:focus,
     select:focus,
-    textarea:focus {outline: none;color: #EF9A9A;border-color: #2196F3;box-shadow: 0 0 8px #42A5F5;background-color: transparent;}
-    textarea {background-color: transparent;resize: vertical;min-height: 120px;}
-    button {background-color: #5d5dfc;text-align: center;border-radius: 6px;color: white;border: none;padding: 12px 25px;font-size: 1.1em;font-weight: bold;cursor: pointer;width: 100%;transition: background-color 0.3s ease;}
-    input, button {width: 100%;padding: 10px;margin: 10px 0;border-radius: 5px;border: none;}
-    .hint {font-size: 15px;color: white;margin-top: 15px;opacity: 0.6;}
-    .infos{width: 80%;margin-left: 10%;margin-top: 5%;background-color: #1a1a2e;padding:2rem;border-radius:8px;box-shadow:0 2px 8px #F44336;}
-    .infos h2{color: red;opacity: 0.6;}
-    .infos h3{margin-top:1rem;color:blue;}
-    .infos p{ margin:0.3rem 0;color:white;opacity:0.7;}
-    .pubs{max-width:1000px;margin:2rem auto;padding:0 1rem;}
-    .pubs h2 {color: black;}
-    .pubs iframe{width:100%;height:400px;border:0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-        .faq{max-width:800px;font-size:13px;padding:1rem;}
-    .faq h2{text-align:center;color:black;margin-bottom:2rem;}
-    .faq-item{border:1px solid #ddd;border-radius:6px;margin-bottom:1rem;overflow:hidden;}
-    .faq-question{width:100%;color:black;padding:1rem;text-align:left;background:#f9f9f9;cursor:pointer;font-weight:bold;display:flex;justify-content:space-between;align-items:center;}
-    .faq-answer{display:none;padding:1rem;background:#FFCDD2;color:black;opacity:0.8;border-radius:3px;}
-    .rotate{transform:rotate(180deg);}
-    table {text-align: left;width: 100%;}
-    .nav {background: transparent;display: flex;justify-content: center;gap: 0.8em;padding: 1em;box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);border-radius: 8px;}
-    .nav a {color: #B2EBF2;text-decoration: none;font-weight: bold;font-size: 17px;transition: color 0.3s, transform 0.2s;perspective: 500px;}
-    .nav a:active {transform: rotateX(15deg) translateZ(5px);color: #0984e3;transition: transform 0.1;}
-    .nav a:hover {color: #0984e3;}
-    section {display: none;max-width: 340px;margin: 2em auto;padding: 2em;background: #B3E5FC;border-radius: 12px;box-shadow: 0 0 8px #42A5F5;color: #222;}
-    section.active {display: block;animation: fadeIn 0.5s ease-in-out;}
-    h2 {color: #0984e3;font-size:19px;margin-top: 0;position: relative;overflow: hidden;}
-    .warning-box {background-color: rgb(148, 7, 7);border: 1px solid #ff0000;border-radius: 12px;padding: 15px;margin: 30px 0;display: flex;align-items: center;font-weight:500;font-size: 0.9em;color: #ffffff;}
-    .warning-icon {font-size: 1.5em;color: #ff0000;margin-right: 10px;}
-    .warning-text {font-size: 15px;text-align: center;flex-grow: 1;line-height: 1.4;}
-    .service{font-size: 16px;font-weight: bold;text-align: center;background: green;padding: 5px;color: white;}
-    .client {font-size: 14px;background: #42A5F5;height: 6%;color: #EF5350;font-weight: 500;}
-    .client h7{margin-left:5%;}
-    .client h01{margin-left: 5%;}
-    h6{font-size: 13px;color: white;background-color: rgb(148, 7, 7);border-radius: 7px;margin: 10px;text-align: center;justify-content: center;width: 110px;height: 34px;}
-    .teams{font-size: 16px;color: black;opacity: 0.7;}
-    .teams span{color: red;font-size: 16px;}
-    .info{color: #512DA8;font-weight: bold;}
-    .info span{font-weight: bold;font-size: 14px;color: #2196F3;}
-    .info span1{font-size: 16px;color: black;font-weight: 700;opacity: 0.6;}
-    .info span2{color: #512DA8;}
-    .info span3{color: #2196F3;}
-    .info span4{color: #2196F3;}
-    .info span5{color: #2196F3;}
-    .live{color: black;opacity: 0.7;}
-    .live span{color: red;font-size: 16px;}
-     .match{color: #2196F3;font-weight: bold;font-size: 14px;}
-    .match span{color: red;font-size: 16px;}
-    .match span1{font-size: 16px;color: black;font-weight: 700;opacity: 0.6;}
-    .match span2{color: #512DA8;}
-    .match span4{color: #512DA8;}
-    .strate{font-size: 16px;color: black;opacity: 0.7;}
-    .strate span{color: red;font-size: 16px;}
-    .strategie{color: gray;font-weight: bold;font-size: 16px;}
-    .strategie span{color: #2196F3;}
-    .verifier{font-weight: 800;color: red;opacity: 0.7;}
-    .verifier span{color: black;font-weight: 700;}
-    .name{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
-    .sujet{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
-    .msg{color: black;font-weight: bold;margin-bottom: 0.3rem;opacity: 0.7;}
-    .message{width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:6px;border-color: #2196F3;margin-bottom:1rem;font-size:1rem;background: transparent;}
+    textarea:focus {
+        outline: none;
+        border-color: #2196F3;
+        box-shadow: 0 0 8px #42A5F5;
+        background-color: transparent;
+    }
+    textarea {
+        background-color: transparent;
+        resize: vertical;
+        min-height: 120px;
+    }
     input[type="number"],
-    input[type="text"] {width: 100%;padding: 12px 15px;background-color: transparent;border: 1px solid #2196F3;border-radius: 8px;color: black;font-size: 1.1em;box-sizing: border-box;outline: none;transition: border-color 0.3s ease, box-shadow 0.3s ease;}
+    input[type="text"] {
+        width: 100%;
+        padding: 12px 15px;
+        background-color: transparent;
+        border: 1px solid #2196F3;
+        border-radius: 8px;
+        color: black;
+        font-size: 1.1em;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
     input[type="number"]:focus,
-    input[type="text"]:focus {border-color: #2196F3;box-shadow: 0 0 8px #42A5F5;}
-    input::placeholder {color: #7A5BBD;}
-    .video {width:80%;margin:10%; padding:4rem 1rem; text-align:center; background:white;}
-    .video iframe {width:80%; max-width:800px; height:300px; border:none; border-radius:12px;}
-    .submit{color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:6px;cursor:pointer;font-weight:bold;}
-    .prediction-title {font-size: 1.2em;margin: 10;lettre-spacing: 2px;color: #C62828;margin-bottom: 20px;padding: 5px;border-radius: 10px;text-align: center;}
-    .label-with-icon {display: flex;align-items: center;font-size: 0.9em;color: #9B6ED9;margin-bottom: 8px;font-weight: 600; }
-   .label-with-icon svg {margin-right: 8px;color: #9B6ED9;width: 18px;height: 18px;}
-    .percentage-bar {width: 100%;background: #C62828;height: 19px;border-radius: 10px;margin-top: 10px;}
-    .percentage-fill {height: 100%;background: #4CAF50;border-radius: 10px;width: 0%;}
-    footer {text-align: center;background: #0a3d62;color: #a2b1c6;padding: 1em;margin-top: 3em;font-size: 0.9em;border-radius: 0 0 12px 12px;}
-    #accueil h2 {animation: slideInFromLeft 1s ease forwards;}
-    #accueil p {animation: fadeInText 2s ease forwards;opacity: 0;}
-    @keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    input[type="text"]:focus {
+        border-color: #2196F3;
+        box-shadow: 0 0 8px #42A5F5;
     }
-    @keyframes slideInFromLeft {0% {opacity: 0;transform: translateX(-100%);}
-      100% {opacity: 1;transform: translateX(0);}
+    input::placeholder {
+        color: #7A5BBD;
+        font-size: 17px;
     }
-    @keyframes fadeInText {to { opacity: 1; }
+    button {
+        background-color: #5d5dfc;
+        text-align: center;
+        border-radius: 6px;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
     }
-    article {margin-bottom: 2em;}
-    body h3{justify-content: center;color: red;
-        font-family: Arial, sans-serif;}
-    li {background: linear-gradient(to bottom,#d32aa9, #d32aa9, #d32aa9, #d32aa9); list-style-type: none;margin: 0px;padding: 10px;border-radius: 10px;color: white;8height: 100px;opacity: 0.7;font-weight: bold;}
-    li span{color: black;opacity: 0.5;}
-    p{text-align: center;font-size: 15px;}
+    input, button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+    }
+    .name {
+        color: black;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        opacity: 0.7;
+    }
+    .sujet {
+        color: black;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        opacity: 0.7;
+    }
+    .msg {
+        color: black;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        opacity: 0.7;
+    }
+    .message {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        border-color: #2196F3;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        background: transparent;
+    }
+    .icon {
+        text-align: center;
+        font-size: 53px;
+    }
+    .page {
+        display: none;
+        padding: 0px;
+    }
+    .active {
+        display: block;
+    }
+    .login-box {
+        text-align: center;
+        color: white;
+    }
+    .login-box input {
+        width: 100%;
+        height: 30px;
+        outline: none;
+        background-color: transparent;
+        border: 1px solid #42A5F5;
+        border-radius: 40px;
+        font-size: 16px;
+        color: black;
+        padding: 20px 45px 20px 20px;
+    }
+    .login-box input::placeholder {
+        color: gray;
+        background-color: transparent;
+    }
+    .login-box h5 {
+        color: #29B6F6;
+        text-align: center;
+        font-size: 27px;
+    }
+    .hint {
+        font-size: 15px;
+        color: black;
+        margin-top: 15px;
+        opacity: 0.6;
+    }
+    h9 {
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        background-color: rgb(148, 7, 7);
+        border-radius: 6px;
+        text-align: center;
+        padding: 2px 5px;
+    }
+    .teams {
+        font-size: 16px;
+        color: black;
+        opacity: 0.7;
+    }
+    .teams span {
+        color: red;
+        font-size: 16px;
+    }
+    .info {
+        color: #512DA8;
+        font-weight: bold;
+    }
+    .info span {
+        font-weight: bold;
+        font-size: 14px;
+        color: #2196F3;
+    }
+    .info span1 {
+        font-size: 16px;
+        color: black;
+        font-weight: 700;
+        opacity: 0.6;
+    }
+    .info span2 {
+        color: #512DA8;
+    }
+    .info span3 {
+        color: #2196F3;
+    }
+    .info span4 {
+        color: #2196F3;
+    }
+    .info span5 {
+        color: #2196F3;
+    }
+    .live {
+        color: black;
+        opacity: 0.7;
+    }
+    .live span {
+        color: red;
+        font-size: 16px;
+    }
+    .match {
+        color: #2196F3;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .match span {
+        color: red;
+        font-size: 16px;
+    }
+    .match span1 {
+        font-size: 16px;
+        color: black;
+        font-weight: 700;
+        opacity: 0.6;
+    }
+    .match span2 {
+        color: #512DA8;
+    }
+    .match span4 {
+        color: #512DA8;
+    }
+    .strate {
+        font-size: 16px;
+        color: black;
+        opacity: 0.7;
+    }
+    .strate span {
+        color: red;
+        font-size: 16px;
+    }
+    .strategie {
+        color: gray;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .strategie span {
+        color: #2196F3;
+    }
+    .verifier {
+        font-weight: 500;
+        color: red;
+        opacity: 0.7;
+    }
+    .verifier span {
+        color: black;
+        font-weight: 700;
+    }
+    body h7 {
+        justify-content: center;
+        color: red;
+        font-family: Arial, sans-serif;
+    }
+    li {
+        background: linear-gradient(to bottom,#d32aa9, #d32aa9, #d32aa9, #d32aa9);
+        list-style-type: none;
+        margin: 0px;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        8height: 100px;
+        opacity: 0.7;
+        font-weight: bold;
+    }
+    li span {
+        color: black;
+        opacity: 0.5;
+    }
+    p {
+        text-align: center;
+        font-size: 15px;
+    }
+    .prediction-title {
+        font-size: 1.2em;
+        margin: 10;
+        lettre-spacing: 2px;
+        color:  #2e7d32;
+        margin-bottom: 20px;
+        padding: 5px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .label-with-icon {
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+        color: #9B6ED9;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .label-with-icon svg {
+        margin-right: 8px;
+        color: #9B6ED9;
+        width: 18px;
+        height: 18px;
+    }
+    .percentage-bar {
+        width: 100%;
+        background: #C62828;
+        height: 19px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .percentage-fill {
+        height: 100%;
+        background: #4CAF50;
+        border-radius: 10px;
+        width: 0%;
+    }
+    .live h7 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .live h8 {
+        background: black;
+        color: white;
+        padding: 5px 10px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 3px;
+    }
+    .case {
+        background-color: transparent;
+        padding: 10px 3px;
+        border-radius: 6px;
+        margin: 5px;
+    }
+    .case p {
+        text-align: left;
+        background: #EF5350;
+        color: white;
+        font-weight: 400;
+        padding: 3px;
+        font-size: 14px;
+        width: 37%;
+        border-radius: 3px;
+    }
+    .case p1 {
+        color: black;
+        font-size: 17px;
+        font-weight: 600;
+    }
+    .case p2 {
+        color: #757575;
+        font-weight: 300;
+        font-size: 14px;
+    }
+    .bet-options {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        border-color: #2e7d32;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .option .label {
+        font-size: 0.8em;
+        color: red;
+        margin-bottom: 3px;
+    }
+    .option .odd {
+        font-weight: bold;
+        color: #28a745;
+    }
+    p4 span {
+        color: red;
+    }
 </style>
-    
-   <body>
-<div class="page active" id="page-login">
-    <div class="tete">
-        <h5>AVIATOR V2.6.1</h5>
-    </div>
-    <div class="hero">
-        <h1>BIENVENUE</h1>
-        <p>Nous sommes là pour vous aidez à donner des tours predicts sur le site de www.bet.mg sur le jeu Aviator .</p>
-    </div>
-    <div class="Container">
-    <div class="icon">🔐</div>
-    <div class="login-box">
-        <h1>Code d'Activation Requis</h1>
-        <h2>Entrer votre code pour acceder au predicteur. </h2>
-    <input type="Email" id="Email Adress" placeholder="Email Adress">
-    <input type="password" id="password" placeholder="Mot de passe">
-    <button onclick="login()">Login</button>
-    <div class="hint">🔰 Analyser avec porvably fair  </div>
-    </div>
-</div>
-    <div class="infos">
-        <h2>🇲🇬 Nos coordonnées</h2>
-        <h3>Email :</h3>
-        <p>TechAviator25@gmail.com</p>
-        <p>aviator261@gmail.com</p>
-        <h3>Whats up :</h3>
-        <p>+261 34 71 055 58</p>
-    </div>
-    <div class="video" id="video">
-  <h2>PUBS</h2>
-  <iframe src="https://www.youtube.com/embed/dFUlAQZB9Ng" allowfullscreen></iframe>
-</div>
-    <div class="faq">
-        <h2>Questions fréquentes</h2>
-    <div class="faq-item">
-    <button class="faq-question">Pendant quel mois la nouvelle mise a jour ? <span>▼</span></button>
-    <div class="faq-answer"><p>Le mise a jour se deroule dans une mois a peut pres .</p></div>
-    </div>
-    <div class="faq-item">
-    <button class="faq-question">Pourquoi il faut suivre la strategie Tech ? <span>▼</span></button>
-    <div class="faq-answer"><p>La strategie Tech qui nous analyse les tours predict donc quand vous ne suivez pas cette strategie les tours sont faux .</p></div>
-    </div>
-    <div class="faq-item">
-    <button class="faq-question">Est-ce-que le Site ou l'Apps Aviator V2.6.1 est tres bonnes en prediction ? <span>▼</span></button>
-    <div class="faq-answer"><p>Oui, car cette Site ou l'Apps est l'unique qui analyse des tours aviators sur www.bet.mg, quand vous ne@croyez pas contactez nous .</p></div>
-        </div>
-    </div>
-        <footer>
-        &copy; 2025 | TechEvolution.
-    </footer>
-</div>
+<body>
+    <header>
+        <h1>Eskel Pronostiques</h1>
+        <p id="subtitle">
+            Matchs bien analyser sur le Site de Bet261.mg
+        </p>
+    </header>
 
-<div class="page" id="page-main">
-    <div class="tete">
-        <h5>AVIATOR V2.6.1</h5>
-    <div class="nav">
+    <nav>
         <a href="#accueil" onclick="showSection('accueil')">Accueil</a>
-        <a href="#Strategies" onclick="showSection('Strategies')">Strategies</a>
-        <a href="#Prediction" onclick="showSection('Prediction')">Prediction</a>
-        <a href="#Contact" onclick="showSection('Contact')">Contact</a>
-    </div>
-</div>
-    
-<section id="accueil" class="active">
+        <a href="#Pronostiques" onclick="showSection('pronostique')">Pronostiques</a>
+        <a href="#Aviator" onclick="showSection('aviator')">Aviators</a>
+        <a href="#contact" onclick="showSection('contact')">Contacts</a>
+    </nav>
+
+    <section id="accueil" class="active">
         <h2>Bienvenue</h2>
-        <p>Découvrez nos tours prediction. </p>
-    <div class="warning-box">
-        <span class="warning-icon">&#9888;</span><div class="warning-text">ATTENTION : Cette prédiction est base sur une strategie 📊, elle n'est donc pas garantie à 100%.</div>
-        <span class="warning-icon">&#9888;</span>
-    </div>
-    <div class="service">SERVICES :</div>
-    <div class="client">
-    <h7>Whats up: <span>+261347105558</span></h7><br>
-    <h01>Email : <span>TechAviator25@gmail.com</span></h01>
-    </div>
-</section>
-
-<section id="Strategies">
-        <h6>🔵 Depart cote manga :</h6>
-    <div class="teams"><span>1) </span> Rehefa manga 1 no ao ampivonina violet, ka violet roa ny fiantombohany dia violet 2 koa ny fiafarany.</div>
-        <p1 class="info"><span1>Oh: </span1><span5>1.34x, </span5><span2>2.21x,</span2> 6.07x, <span4>1.05x, </span4> 3.34x, 2.78x, <span5>1.24x</span5> ✅</p1>
-    <div class="live"><span>2) </span> Rehefa violet 1 no manomboka ka manga bedebe no ao ampivony ka faranany violet 1 koa .</div>
-        <p1 class="match"><span1>Oh: </span1>1.34x, <span2>2.21x, </span2> 6.07x, 1.05x, 3.34x, <span4>2.78x, </span4><span3>1.24x</span3>✅</p1>
-    <div class="strate"><span>3) </span> Rehefa mahita manga 5 mifanesy dia ao aorinany iny tsy maintsy misy tour violet na rose </div>
-        <p1 class="strategie"><span1>Oh :</span1><span> 1.24x, 1.76x, 1.34x, 1.99x, 1.00x </span>✅</p1>
-    <div class="verifier"><span>Fanamafisana :</span> Rehefa tsy manaraka an'ireo strategie ireo dia lasa diso cote angalana an'ilay tour tokony analysena enao, ka mamoka tour ratsy ilay prediction, ka mitandrema tsara.</div>
-</section>
-
-<section id="Contact">
-    <form>
-        <h2>Envoyez-nous un message</h2>
-    <label for="name" class="name">Nom complet :</label>
-    <input type="text" id="name" required>
-    <label for="subject" class="sujet">Sujet :</label>
-    <input type="text" id="subject">
-    <label for="message" class="msg">Message :</label>
-    <textarea id="message" rows="5"class="message" placeholder="envoyer nous des messages a propos du site ..." ></textarea>
-    <button type="submit" class="submit">Envoyer le message</button>
-    </form>
-</section>
-
-<section id="Prediction">
-    <div class="warning-box">
-        <span class="warning-icon">&#9888;</span><div class="warning-text">ATTENTION : Veuillez suivez la strategie Tech avant de calculer .</div>
-        <span class="warning-icon">&#9888;</span>
-    </div>
-        <h1 class="prediction-title">Résultat de la Prédiction</h1>
-    <table>
-    <tr><th><label for="tourInput" class="label-with-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
-    <line x1="8" y1="6" x2="21" y2="6"></line>
-    <line x1="8" y1="12" x2="21" y2="12"></line>
-    <line x1="8" y1="18" x2="21" y2="18"></line>
-    <line x1="3" y1="6" x2="3.01" y2="6"></line>
-    <line x1="3" y1="12" x2="3.01" y2="12"></line>
-    <line x1="3" y1="18" x2="3.01" y2="18">
-    </svg>Tours ( 01-99 ) :</line></th></tr>
-    <tr><td><input type="number" id="tour-number" placeholder="Ex: 99"></td></tr>
-    <tr><th><label for="coteInput" class="label-with-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-        <polyline points="17 6 23 6 23 12"></polyline>
-        </svg>Cote ( <2.00 ) :</label></th></tr>
-    <tr><td><input type="text" id="cote-value" placeholder="Ex: X1.99"></td></tr>
-    </table>
-    <div id="result"></div>
-    <tr><th><label for="coteInput" class="label-with-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
-    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-    <polyline points="17 6 23 6 23 12"></polyline>
-    </svg>Statistiques :</label></th></tr>
-            <tr><td></td></tr>
-    </table>
-    <div class="percentage-bar">
-    <div class="percentage-fill" id="percentage-fill"></div>
+        <div class="hero">
+            <p>
+                Nous sommes là pour vous aidez à donner des Pronostiques et des Tours Aviators sur le site de www.bet261.mg .
+            </p>
         </div>
-    <center><button onclick="calculer()">Calcule prédiction</button></center>
+        <div class="warning-box">
+            <span class="warning-icon">&#9888;</span><p class="warning-text">
+                ATTENTION : Cette prédiction est basée sur la strategie d'Eskel, elle n'est donc pas garantie à 100%.
+            </p>
+            <span class="warning-icon">&#9888;</span>
         </div>
-    </div>
-</section>
- </body>
+        <div class="service">
+            SERVICES :
+            <div class="client">
+                Whats up: <span>+261347105558</span> Email : <span1>mickaelrakotoharilala@gmail.com</span1>
+            </div>
+        </div>
+        <div class="faq">
+            <h4>Questions fréquentes</h4>
+            <div class="faq-item">
+                <button class="faq-question">Est-ce-que cette Pronostiques est base sur des Strategies ? <span>▼</span></button>
+                <div class="faq-answer">
+                    <p>
+                        Cette Pronostique est base sur des Strategies d'Eskel, donc elle n'est pas garentie à 100% .
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Est-ce-que l'aviator est tres bonne en prediction ? <span>▼</span></button>
+                <div class="faq-answer">
+                    <p>
+                        Non , mais il faut suivre les Strategies avant de calculer pour que les Tours sont stables .
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Ou se trouve les Strategies ? <span>▼</span></button>
+                <div class="faq-answer">
+                    <p>
+                        Click sur Aviators puis entrer les identifiants, les strategies se trouve a l'exterieure .
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pronostique">
+        <div class="Live">
+            <h8>Live</h8>
+            <h7>PRONOSTIQUES DU JOURS (12/10/25):</h7>
+        </div>
+        <div class="case">
+            <p>
+                Aujourd’hui -22:00
+            </p>
+            <p1>Mali - Madagascar</p1><br>
+            <p2>Internationa, Qualification Coupe du Monde, Afrique</p2>
+            <div class="bet-options">
+                <div class="option">
+                    <span class="label">1</span>
+                    <span class="odd">Perde</span>
+                </div>
+                <div class="option draw">
+                    <span class="label">X</span>
+                    <span class="odd">Gagne</span>
+                </div>
+                <div class="option">
+                    <span class="label">2</span>
+                    <span class="odd">Gagne</span>
+                </div>
+            </div>
+            <p4>• Nombre de Buts: <span>2-3</span></p4>
+        </div>
+
+        <div class="case">
+            <p>
+                Aujourd’hui -16:00
+            </p>
+            <p1>San Marin - Chypre</p1><br>
+            <p2>Internationa, Qualification Coupe du Monde, Europe</p2>
+            <div class="bet-options">
+                <div class="option">
+                    <span class="label">1</span>
+                    <span class="odd">Perde</span>
+                </div>
+                <div class="option draw">
+                    <span class="label">X</span>
+                    <span class="odd">Perde</span>
+                </div>
+                <div class="option">
+                    <span class="label">2</span>
+                    <span class="odd">Gagne</span>
+                </div>
+            </div>
+            <p4>• Handicape Europeens: 2 <span>(1-0)</span></p4>
+        </div>
+
+        <div class="case">
+            <p>
+                Aujourd’hui -19:00
+            </p>
+            <p1>Ecosse - Bielorussie</p1><br>
+            <p2>Internationa, Qualification Coupe du Monde, Europe</p2>
+            <div class="bet-options">
+                <div class="option">
+                    <span class="label">1</span>
+                    <span class="odd">Gagne</span>
+                </div>
+                <div class="option draw">
+                    <span class="label">X</span>
+                    <span class="odd">Perde</span>
+                </div>
+                <div class="option">
+                    <span class="label">2</span>
+                    <span class="odd">Perde</span>
+                </div>
+            </div>
+            <p4>• Handicape Europeens: 1 <span>(0-1)</span></p4>
+        </div>
+
+        <div class="case">
+            <p>
+                Aujourd’hui -20:00
+            </p>
+            <p1>Malte - Borsnie Herzegogine</p1><br>
+            <p2>Internationa- Amicaux Internationaux </p2>
+            <div class="bet-options">
+                <div class="option">
+                    <span class="label">1</span>
+                    <span class="odd">Perde</span>
+                </div>
+                <div class="option draw">
+                    <span class="label">X</span>
+                    <span class="odd">Gagne</span>
+                </div>
+                <div class="option">
+                    <span class="label">2</span>
+                    <span class="odd">Gagne</span>
+                </div>
+            </div>
+            <p4>• 1er Mi Temps: 2 <span>Gagne</span></p4>
+        </div>
+    </section>
+
+    <section id="aviator">
+        <div class="page active" id="page-login">
+            <div class="icon">
+                🔐
+            </div>
+            <div class="login-box">
+                <h5>Code d'Activation Requis</h5>
+                <input type="Email" id="Email Adress" placeholder="Email Adress">
+                <input type="password" id="password" placeholder="Mot de passe">
+                <button onclick="login()">Login</button>
+                <div class="hint">
+                    🔰 Analyser avec porvably fair
+                </div>
+            </div>
+        </div>
+        <div class="page" id="page-main">
+            <div class="warning-box">
+                <span class="warning-icon">&#9888;</span><div class="warning-text">
+                    ATTENTION : Veuillez suivre la strategie d'Eskel avant de calculer .
+                </div>
+                <span class="warning-icon">&#9888;</span>
+            </div>
+            <h9>🔵 Depart cote manga :</h9>
+            <div class="teams">
+                <span>1) </span> Rehefa manga 1 no ao ampivonina violet, ka violet roa ny fiantombohany dia violet 2 koa ny fiafarany.
+            </div>
+            <p1 class="info"><span1>Oh: </span1><span5>1.34x, </span5><span2>2.21x,</span2> 6.07x, <span4>1.05x, </span4> 3.34x, 2.78x, <span5>1.24x</span5> ✅</p1>
+            <div class="live">
+                <span>2) </span> Rehefa violet 1 no manomboka ka manga bedebe no ao ampivony ka faranany violet 1 koa .
+            </div>
+            <p1 class="match"><span1>Oh: </span1>1.34x, <span2>2.21x, </span2> 6.07x, 1.05x, 3.34x, <span4>2.78x, </span4><span3>1.24x</span3>✅</p1>
+            <div class="strate">
+                <span>3) </span> Rehefa mahita manga 5 mifanesy dia ao aorinany iny tsy maintsy misy tour violet na rose
+            </div>
+            <p1 class="strategie"><span1>Oh :</span1><span> 1.24x, 1.76x, 1.34x, 1.99x, 1.00x </span>✅</p1>
+            <div class="verifier">
+                <span>Fanamafisana :</span> Rehefa tsy manaraka an'ireo strategie ireo dia lasa diso cote angalana an'ilay tour tokony analysena enao, ka mamoka tour ratsy ilay prediction, ka mitandrema tsara.
+            </div>
+            <h1 class="prediction-title">Résultat de la Prédiction</h1>
+            <table>
+                <tr><th><label for="tourInput" class="label-with-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18">
+                        </svg>Tours ( 01-99 ) :</line></th></tr>
+                    <tr><td><input type="number" id="tour-number" placeholder="Ex: 99"></td></tr>
+                    <tr><th><label for="coteInput" class="label-with-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>Cote ( <2.00 ) :</label></th></tr>
+                        <tr><td><input type="text" id="cote-value" placeholder="Ex: x1.99"></td></tr>
+                    </table>
+                        <div id="result"></div>
+                        <tr><th><label for="coteInput" class="label-with-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>Statistiques :</label></th></tr>
+                        <tr><td></td></tr>
+                    </table>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill" id="percentage-fill"></div>
+                    </div>
+                    <center><button onclick="calculer()">Calcule prédiction</button></center>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <form>
+                <h3>Envoyez-nous des messages</h3>
+                <label for="name" class="name">Nom complet :</label>
+                <input type="text" id="name" required>
+                <label for="subject" class="sujet">Sujet :</label>
+                <input type="text" id="subject">
+                <label for="message" class="msg">Message :</label>
+                <textarea id="message" rows="5"class="message" placeholder="envoyer nous des messages ..."></textarea>
+                <button type="submit" class="submit">Envoyer le message</button>
+            </form>
+        </section>
+
+        <footer>
+            &copy; 2025 | Pronostiques.
+        </footer>
+    </body>
 
     <script>
-    function login() {
-    const user = document.getElementById('Email Adress').value;
-    const pass = document.getElementById('password').value;
-    if (user === 'aviator261@gmail.com' && pass === 'Z6XE90') {
-    document.getElementById('page-login').classList.remove('active');
-    document.getElementById('page-main').classList.add('active');
-    } else {
-    alert("Email Adress ou mot de passe incorrect");
+        //------// SECTION //------//
+        const sections = ["accueil", "pronostique", "aviator", "contact"];
+        function showSection(id) {
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                if (el) {
+                    el.classList.toggle("active", sec === id);
+                }
+            });
         }
-    }
-  const sections = ["accueil", "Strategies", "Prediction", "Contact"];
-  function showSection(id) {
-    sections.forEach(sec => {
-      const el = document.getElementById(sec);
-      if (el) {
-        el.classList.toggle("active", sec === id);
+        //------// FAQ TOOGLE //------//
+        document.querySelectorAll(".faq-question").forEach(btn=> {
+            btn.addEventListener("click", ()=> {
+                const answer = btn.nextElementSibling;
+                answer.style.display = answer.style.display === "block"?"none": "block";
+            });
+        });
+        //------// LOGIN //-------//
+        function login() {
+            const user = document.getElementById('Email Adress').value;
+            const pass = document.getElementById('password').value;
+            if (user === '' && pass === '') {
+                document.getElementById('page-login').classList.remove('active');
+                document.getElementById('page-main').classList.add('active');
+            } else {
+                alert("Email Adress ou mot de passe incorrect");
+            }
         }
-    });
-}
-    function calculer() {
-    const tour = parseInt(document.getElementById('tour-number').value);
-    const cote = document.getElementById('cote-value').value;
-    if (!tour || !cote.startsWith('X1.')) {
-    alert("Veuillez entrer une tour valider avec une côte minimum de X2.00");
-    return;
+        function showSection(id) {
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                if (el) {
+                    el.classList.toggle("active", sec === id);
+                }
+            });
         }
-    let results = [];
-    let start = (tour + 2 * 6 * 1) % 100;
-    for (let i = 0; i < 3; i++) {
-    results.push((start + i) % 100);
+        //------// CALCULE //------//
+        function calculer() {
+            const tour = parseInt(document.getElementById('tour-number').value);
+            const cote = document.getElementById('cote-value').value;
+            if (!tour || !cote.startsWith('x1.')) {
+                alert("Veuillez entrer une tour valider avec une côte minimum de X2.00");
+                return;
+            }
+            let results = [];
+            let start = (tour + 2 * 6 * 1) % 100;
+            for (let i = 0; i < 3; i++) {
+                results.push((start + i) % 100);
+            }
+            let html = '<h7>Tours prédicts :✅ </h7><ul>';
+            results.forEach(t => {
+                let tDisplay = t < 5 ? '00' + t: (t < 100 ? '***' + t: t);
+                html += `<li>🎯 TOURS <span>${tDisplay}</span><p>Cette tours n'est pas garentie a 100% <p></li><br><br>`;
+            });
+            html += '</ul>';
+            document.getElementById('result').innerHTML = html;
+            const pourcentage = Math.floor(Math.random() * (75 - 60 + 1)) + 60;
+            document.getElementById('percentage-fill').style.width = pourcentage + '%';
         }
-    let html = '<h3>Tours prédicts :✅ </h3><ul>';
-    results.forEach(t => {
-    let tDisplay = t < 5 ? '00' + t : (t < 100 ? '***' + t : t);
-    html += `<li>🎯 TOURS <span>${tDisplay}</span><p>Cette tours n'est pas garentie a 100% <p></li><br><br>`;
-    });
-    html += '</ul>';
-    document.getElementById('result').innerHTML = html;
-    const pourcentage = Math.floor(Math.random() * (75 - 60 + 1)) + 60;
-    document.getElementById('percentage-fill').style.width = pourcentage + '%';
+        function switchLang(lang) {
+            alert("Fonction de changement de langue à implémenter (" + lang + ")");
         }
-  function switchLang(lang) {
-    alert("Fonction de changement de langue à implémenter (" + lang + ")");
-  }
-  window.addEventListener("DOMContentLoaded", () => {
-    showSection("accueil");
-  });
-  // FAQ toggle
-  document.querySelectorAll(".faq-question").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      const answer=btn.nextElementSibling;
-      answer.style.display=answer.style.display==="block"?"none":"block";
-    });
-}); 
+        window.addEventListener("DOMContentLoaded", () => {
+            showSection("accueil");
+        });
     </script>
 </html>
