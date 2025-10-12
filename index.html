@@ -193,7 +193,6 @@
     input[type="password"]:focus,
     select:focus,
     textarea:focus {
-        with:80%;
         outline: none;
         border-color: #2196F3;
         box-shadow: 0 0 8px #42A5F5;
@@ -477,11 +476,14 @@
         width: 0%;
     }
     .live h7 {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
     }
+    .live h7 span{
+        color:#64b5f6;
+    }
     .live h8 {
-        background: black;
+        background: #f44336;
         color: white;
         padding: 5px 10px;
         font-size: 16px;
@@ -609,7 +611,7 @@
     <section id="pronostique">
         <div class="Live">
             <h8>Live</h8>
-            <h7>PRONOSTIQUES DU JOURS (12/10/25):</h7>
+            <h7>PRONOSTIQUES DU JOURS <span>(12/10/25)</span>:</h7>
         </div>
         <div class="case">
             <p>
@@ -817,7 +819,7 @@
         function login() {
             const user = document.getElementById('Email Adress').value;
             const pass = document.getElementById('password').value;
-            if (user === '' && pass === '') {
+            if (user === 'aviator@gmail.com' && pass === 'Z6XE90') {
                 document.getElementById('page-login').classList.remove('active');
                 document.getElementById('page-main').classList.add('active');
             } else {
